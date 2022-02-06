@@ -96,32 +96,32 @@ public class Rotate{
         }
  
         else if (input.equalsIgnoreCase("l")){
-            transpose(data2[1]);
-            reverseColumns(data2[1]);
-            Cube custom1[] = {data1[2][2][0], data1[2][1][0], data1[2][0][0]};
-            Cube custom2[] = {data2[2][2][2], data2[2][1][2], data2[2][0][2]};
-            shift(custom1, data1[0][0], custom2, data2[0][2], false);
-        }
-        else if (input.equalsIgnoreCase("l'")){
             for (int i = 0; i < 3; i++){
                 transpose(data2[1]);
                 reverseColumns(data2[1]);
             }
             Cube custom1[] = {data1[2][2][0], data1[2][1][0], data1[2][0][0]};
             Cube custom2[] = {data2[2][2][2], data2[2][1][2], data2[2][0][2]};
+            shift(custom1, data1[0][0], custom2, data2[0][2], false);
+        }
+        else if (input.equalsIgnoreCase("l'")){
+            transpose(data2[1]);
+            reverseColumns(data2[1]);
+            Cube custom1[] = {data1[2][2][0], data1[2][1][0], data1[2][0][0]};
+            Cube custom2[] = {data2[2][2][2], data2[2][1][2], data2[2][0][2]};
             shift(custom2, data2[0][2], custom1, data1[0][0], true);
         }
 
-        else if (input.equalsIgnoreCase("b")){
-            transpose(data2[0]);
-            reverseColumns(data2[0]);
-            shift(data1[2][2], data1[1][2], data2[2][0], data2[1][0], false);
-        }
         else if (input.equalsIgnoreCase("b'")){
             for (int i = 0; i < 3; i++){
                 transpose(data2[0]);
                 reverseColumns(data2[0]);
             }
+            shift(data1[2][2], data1[1][2], data2[2][0], data2[1][0], false);
+        }
+        else if (input.equalsIgnoreCase("b")){
+            transpose(data2[0]);
+            reverseColumns(data2[0]);
             shift(data2[2][0], data2[1][0], data1[2][2], data1[1][2], true);
         }
 

@@ -13,6 +13,7 @@ public class rubixCommands extends ListenerAdapter{
     String prefix = "!";
     RubixCube playingCube = new RubixCube();
     String id = "";
+    String id2 = "";
     RestAction<Message> pause;
     MessageChannel channel;
     ArrayList<String> previousCommands = new ArrayList<String>();
@@ -32,14 +33,6 @@ public class rubixCommands extends ListenerAdapter{
         
         File image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
-        /*if(args[0].equalsIgnoreCase(prefix + "test")){
-            //event.getChannel().sendMessage("This bot is working").queue();
-            if(Objects.nonNull(image)){
-                event.getChannel().sendMessage("yo").addFile(image).queue();
-            } else {
-                event.getChannel().sendMessage("error").queue();
-            }
-        }*/
         if(args[0].equals("currentRubixOutput:")){
             id = event.getMessageId();
         }
@@ -51,6 +44,7 @@ public class rubixCommands extends ListenerAdapter{
         if(args[0].equals(prefix + "randomize")){
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.randomizeCube();
@@ -58,11 +52,10 @@ public class rubixCommands extends ListenerAdapter{
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                //id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                //id = event.getChannel().getLatestMessageId();
             }
+            id2 = event.getMessageId();
         }
 
         if(args[0].equals(prefix + "previousCommands")){
@@ -72,40 +65,38 @@ public class rubixCommands extends ListenerAdapter{
         if(args[0].equalsIgnoreCase(prefix + "display")){
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                //id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                //id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "reset")){
+            previousCommands = new ArrayList<String>();
+
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube = new RubixCube();
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "r")){
@@ -113,21 +104,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("r");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "r'")){
@@ -135,6 +124,7 @@ public class rubixCommands extends ListenerAdapter{
             
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("r'");
@@ -143,13 +133,11 @@ public class rubixCommands extends ListenerAdapter{
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "f")){
@@ -157,21 +145,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("f");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "f'")){
@@ -179,21 +165,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("f'");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "u")){
@@ -201,21 +185,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("u");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "u'")){
@@ -223,21 +205,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("u'");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "l")){
@@ -245,21 +225,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("l");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "l'")){
@@ -267,21 +245,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("l'");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "b")){
@@ -289,21 +265,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("b");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "b'")){
@@ -311,21 +285,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("b'");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "d")){
@@ -333,21 +305,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("d");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
         if(args[0].equalsIgnoreCase(prefix + "d'")){
@@ -355,21 +325,19 @@ public class rubixCommands extends ListenerAdapter{
 
             if(!id.equals("")){
                 event.getChannel().deleteMessageById(id).queue();
+                event.getChannel().deleteMessageById(id2).queue();
             }
 
             playingCube.rotateCube("d'");
             playingCube.printCube();
-            //image = new File("/Users/nicolassaid/Desktop/rubixBotProject/rubixCubeProject/rubixCube.png");
 
             try{
                 event.getChannel().sendMessage("currentRubixOutput:").addFile(image).queue();
-                id = event.getChannel().getLatestMessageId();
             } catch(Exception e) {
                 event.getChannel().sendMessage("currentRubixOutput: Error, Image Not Found").queue();
-                id = event.getChannel().getLatestMessageId();
             }
 
-            //image.delete();
+            id2 = event.getMessageId();
         }
 
     }
