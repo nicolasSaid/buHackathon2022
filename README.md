@@ -10,5 +10,4 @@ Use !help when the bot is running to see the list of commands and their usage
 
 In rubixCommands.java, the filepath should be changed to reflect your own filepath for this repository
 
-When executing, the runner needs to update the filepath in rubixCommands.java and update the bot token when creating the JDABuilder object to the correct 
-  corresponding bot.
+When executing, the runner needs to update the filepath in rubixCommands.java and update the bot token when creating the JDABuilder object in rubixCubeRun.java to the correct corresponding bot.
