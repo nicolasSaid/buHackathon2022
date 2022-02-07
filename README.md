@@ -5,9 +5,7 @@ We are using the JDA API from
 https://github.com/DV8FromTheWorld/JDA
 
 https://ci.dv8tion.net/job/JDA5/
-Must install JDA-5.0.0-alpha.5_c3c1e2b-withDependencies.jar
-
-Add this jar file into your referenced libarary
+Must install JDA-5.0.0-alpha.5_c3c1e2b-withDependencies.jar and add this jar file into your referenced libarary
 
 StdDraw.java is a simple drawing library found here: https://introcs.cs.princeton.edu/java/stdlib/StdDraw.java.html
 
